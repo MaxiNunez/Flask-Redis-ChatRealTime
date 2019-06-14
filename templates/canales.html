@@ -1,0 +1,25 @@
+{%extends "index.html"%}
+{%block content%}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css')}}">
+<div class="container">
+    {% for canal in lista %}
+        {% for sub in canal %}
+            <form method="POST" action="/subscribe?can={{sub[0]}}">
+                <ul class="list-group" method="POST">        
+                    <div class="card text-center mt-2" >
+                        <div class="card-header" >
+                            <b>Canal {{sub[0]}}</b>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title">Suscriptores en linea: {{sub[1]}}</h6>
+                            <button type="submit" class ="btn btn-danger mt-2" id="btnSub" name="btnSub" onclick="alert('Subscripcion con EXITO.');">Subscribirse</button>
+                            <!--<button type="submit" class="btn btn-info mt-2" name="btnUnSub" onclick="alert('Subscripcion CANCELADA.');">Cancelar Sub</button>-->
+                        </div>
+                    </div>
+                </ul>
+            </form>
+        {% endfor %}
+    {% endfor %}
+</div>
+
+{%endblock%}

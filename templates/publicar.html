@@ -1,0 +1,21 @@
+{%extends "index.html"%}
+{%block content%}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css')}}">
+<div class="container py-1 w-50">
+    <div class="card">
+        <div class="card-body text-center">
+            <form action="/clienteMsj" method="GET">
+                <select class="form-control" name="canal">
+                    {% for canal in canales %}
+                        <option>{{canal}}</option>
+                    {% endfor %}
+                </select>
+                <div class="form-group py-3">
+                    <textarea class="form-control" name="texto" rows="2" placeholder="Escriba su mensaje aqui..."></textarea>
+                </div>
+                <button id="btnPublicar2" type="submit" class="btn btn-success" onclick="alert('Mensaje publicado')">Publicar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}
